@@ -29,5 +29,8 @@ namespace DentalClinic.Entities
         public DateTime BirthDay { get; set; }
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
+
+        public virtual ICollection<Examination> Examinations { get; set; } = new List<Examination>();
+        public virtual ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
     }
 }

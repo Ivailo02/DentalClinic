@@ -15,10 +15,26 @@ namespace DentalClinic.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IDentistService _dentistService;
+
+        public DentistsController(UserManager<ApplicationUser> userManager, IDentistService dentistService)
+        {
+            _userManager = userManager;
+            _dentistService = dentistService;
+        }
+
         // GET: DentistsControler
         public ActionResult Index()
         {
-            return View();
+            var dentists = _dentistService.GetDentists().Select(u => new ListingDentisVM
+            {
+                Id = u.Id,
+                FirstName = u.FirstName,
+                LastName = u.LastName,
+                EGN = u.EGN,
+                Phone = u.Phone,
+                Specialty = u.Specialty
+            }).ToList();
+            return View(dentists);
         }
 
         // GET: DentistsControler/Details/5

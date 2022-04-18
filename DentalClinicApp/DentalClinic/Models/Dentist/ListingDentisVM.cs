@@ -1,12 +1,13 @@
-﻿using System;
+﻿using DentalClinic.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DentalClinic.Entities
+namespace DentalClinic.Models.Dentist
 {
-    public class Dentist
+    public class ListingDentisVM
     {
         [Key]
         public int Id { get; set; }
@@ -31,9 +32,5 @@ namespace DentalClinic.Entities
         [Display(Name = "Specialty")]
         public string Specialty { get; set; }
         public string UserId { get; set; }
-        public virtual ApplicationUser User { get; set;}
-
-        public virtual ICollection<Hour> Hours { get; set; } = new List<Hour>();
-        public virtual ICollection<Examination> Examinations { get; set; } = new List<Examination>();
     }
 }

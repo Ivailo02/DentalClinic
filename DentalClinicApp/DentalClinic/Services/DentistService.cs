@@ -18,11 +18,6 @@ namespace DentalClinic.Services
 
         public bool CreateDentist(string firstName, string lastName, string egn, string phone, string specialty, string userId)
         {
-            throw new NotImplementedException();
-        }
-
-        public bool CreateDentists(string firstName, string lastName, string egn, string phone, string specialty, string userId)
-        {
             if (_context.Dentists.Any(p => p.UserId == userId))
             {
                 throw new InvalidOperationException("Employee already exist.");
@@ -31,6 +26,7 @@ namespace DentalClinic.Services
             {
                 FirstName = firstName,
                 LastName = lastName,
+                EGN = egn,
                 Phone = phone,
                 Specialty = specialty,
                 UserId = userId
@@ -48,7 +44,7 @@ namespace DentalClinic.Services
 
         public List<Dentist> GetDentists()
         {
-            throw new NotImplementedException();
+            return _context.Dentists.ToList();
         }
 
         public Dentist GetDentistsById(int dentistid)
