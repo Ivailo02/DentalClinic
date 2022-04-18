@@ -9,6 +9,8 @@ namespace DentalClinic.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Patient> Patients { get; set; }
+        public DbSet<Dentist> Dentists { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
